@@ -1,0 +1,31 @@
+{
+	"accountEnabled": false,
+	"alternativeSignInNamesInfo": [
+		{
+			"type": "emailAddress",
+			"value": "joeconsumer@gmail.com"
+		}
+	],
+	"creationType": "NameCoexistence",
+	"displayName": "Joe Consumer",
+	"mailNickname": "joec",
+	"passwordProfile": {
+		"password": "P@ssword!",
+		"forceChangePasswordNextLogin": false
+	},
+	
+	
+	"city": "San Diego",
+	"country": null,
+	"facsimileTelephoneNumber": null,
+	"givenName": "Joe",
+	"mail": null,
+	"mobile": null,
+	"otherMails": [],
+	"postalCode": "92130",
+	"preferredLanguage": null,
+	"state": "California",
+	"streetAddress": null,
+	"surname": "Consumer",
+	"telephoneNumber": null
+}
