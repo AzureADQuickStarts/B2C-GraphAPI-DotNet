@@ -13,6 +13,7 @@
 		"password": "P@ssword!",
 		"forceChangePasswordNextLogin": false
 	},
+	"passwordPolicies": "DisablePasswordExpiration",
 	
 	
 	"city": "San Diego",
