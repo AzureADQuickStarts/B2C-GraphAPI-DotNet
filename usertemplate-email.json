@@ -1,5 +1,5 @@
 {
-	"accountEnabled": false,
+	"accountEnabled": true,
 	"alternativeSignInNamesInfo": [
 		{
 			"type": "emailAddress",
