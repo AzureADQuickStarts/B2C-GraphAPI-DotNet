@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -44,6 +44,9 @@ namespace B2CGraphShell
                     case "DELETE-USER": DeleteUser(args);
                         break;
                     case "GET-EXTENSION-ATTRIBUTE": GetExtensionAttribute(args);
+                        break;
+                    case "CREATE-EXTENSION-ATTRIBUTE":
+                        RegisterExtensionAttribute(args);
                         break;
                     case "GET-B2C-APPLICATION": GetB2CExtensionApplication(args);
                         break;
@@ -159,6 +162,22 @@ namespace B2CGraphShell
             Console.WriteLine(JsonConvert.SerializeObject(formatted, Formatting.Indented));
         }
 
+        private static void RegisterExtensionAttribute(string[] args)
+        {
+            if (args.Length < 3)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please include the b2c-extensions-app objectId and a path to a .json file.  Run B2CGraphShell Syntax to see examples.");
+                Console.ForegroundColor = init;
+                return;
+            }
+
+            string json = File.ReadAllText(args[2]);
+            object formatted = JsonConvert.DeserializeObject(client.RegisterExtension(args[1], json).Result);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(JsonConvert.SerializeObject(formatted, Formatting.Indented));
+        }
+
         private static void GetB2CExtensionApplication(string[] args)
         {
             object formatted = JsonConvert.DeserializeObject(client.GetApplications("$filter=displayName eq 'b2c-extensions-app'").Result);
@@ -185,6 +204,8 @@ namespace B2CGraphShell
             Console.WriteLine("                             : B2C Delete-User 6d51065f-2e1d-4707-8ec9-ad491bae55dd");
             Console.WriteLine("Get-Extension-Attribute      : B2C Get-Extension-Attribute B2CExtensionsApplicationObjectId");
             Console.WriteLine("                             : B2C Get-Extension-Attribute 909544d8-f8c0-49c7-b137-a89faff6f882");
+            Console.WriteLine("Create-Extension-Attribute   : B2C Create-Extension-Attribute B2CExtensionsApplicationObjectId RelativePathToJson");
+            Console.WriteLine("                             : B2C Create-Extension-Attribute 909544d8-f8c0-49c7-b137-a89faff6f882 attribute-template.json");
             Console.WriteLine("Get-B2C-Application          : B2C Get-B2C-Application");
             Console.WriteLine("Help                         : B2C Help");
             Console.WriteLine("Syntax                       : B2C Syntax");
@@ -198,6 +219,7 @@ namespace B2CGraphShell
             Console.WriteLine("Update-User                  : Update an existing user in your B2C directory.  Requires an objectId as a 2nd arguemnt & a path to a .json file as a 3rd argument.");
             Console.WriteLine("Delete-User                  : Delete an existing user in your B2C directory.  Requires an objectId as a 2nd argument.");
             Console.WriteLine("Get-Extension-Attribute      : Lists all extension attributes in your B2C directory.  Requires the b2c-extensions-app objectId as the 2nd argument.");
+            Console.WriteLine("Create-Extension-Attribute   : Create a new custom attribute for your B2C extensions application.");
             Console.WriteLine("Get-B2C-Application          : Get the B2C Extensions Application in your B2C directory, so you can retrieve the objectId and pass it to other commands.");
             Console.WriteLine("Help                         : Prints this help menu.");
             Console.WriteLine("Syntax                       : Gives syntax information for each command, along with examples.");
