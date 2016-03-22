@@ -183,9 +183,9 @@ namespace B2CGraphShell
             // The first parameter is the resource we want an access_token for; in this case, the Graph API.
             AuthenticationResult result = authContext.AcquireToken("https://graph.windows.net", credential);
             
-            // For B2C user managment, be sure to use the beta Graph API version.
+            // For B2C user managment, be sure to use the 1.6 Graph API version.
             HttpClient http = new HttpClient();
-            string url = "https://graph.windows.net/" + tenant + api + "?" + "api-version=beta";
+            string url = "https://graph.windows.net/" + tenant + api + "?" + "api-version=1.6";
             if (!string.IsNullOrEmpty(query))
             {
                 url += "&" + query;

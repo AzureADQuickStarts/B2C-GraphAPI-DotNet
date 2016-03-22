@@ -1,12 +1,12 @@
 {
 	"accountEnabled": true,
-	"alternativeSignInNamesInfo": [
+	"signInNames": [
 		{
 			"type": "userName",
 			"value": "joeconsumer"
 		}
 	],
-	"creationType": "NameCoexistence",
+	"creationType": "LocalAccount",
 	"displayName": "Joe Consumer",
 	"mailNickname": "joec",
 	"passwordProfile": {
