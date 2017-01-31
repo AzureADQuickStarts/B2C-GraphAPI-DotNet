@@ -75,6 +75,11 @@ namespace B2CGraphShell
             return await SendGraphGetRequest("/applications/" + appObjectId + "/extensionProperties", null);
         }
 
+        public async Task<string> DeleteExtensions(string appObjectId, string extensionObjectId)
+        {
+            return await SendGraphDeleteRequest("/applications/" + appObjectId + "/extensionProperties/" + extensionObjectId);
+        }
+
         public async Task<string> GetApplications(string query)
         {
             return await SendGraphGetRequest("/applications", query);
