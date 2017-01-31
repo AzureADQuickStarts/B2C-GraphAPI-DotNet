@@ -161,7 +161,7 @@ namespace B2CGraphShell
 
         private static void GetB2CExtensionApplication(string[] args)
         {
-            object formatted = JsonConvert.DeserializeObject(client.GetApplications("$filter=displayName eq 'b2c-extensions-app'").Result);
+            object formatted = JsonConvert.DeserializeObject(client.GetApplications("$filter=startswith(displayName,'b2c-extensions-app')").Result);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(JsonConvert.SerializeObject(formatted, Formatting.Indented));
         }
