@@ -1,20 +1,15 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace B2CGraphShell
 {
     public class Program
     {
-        private static string tenant = ConfigurationManager.AppSettings["b2c:Tenant"];
-        private static string clientId = ConfigurationManager.AppSettings["b2c:ClientId"];
-        private static string clientSecret = ConfigurationManager.AppSettings["b2c:ClientSecret"];
+        private static string tenant = ConfigurationManager.AppSettings["adb2c:Tenant"];
+        private static string clientId = ConfigurationManager.AppSettings["adb2c:ClientId"];
+        private static string clientSecret = ConfigurationManager.AppSettings["adb2c:ClientSecret"];
         private static B2CGraphClient client = null;
         private static ConsoleColor init = ConsoleColor.White;
 
