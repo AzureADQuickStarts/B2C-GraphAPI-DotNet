@@ -1,7 +1,7 @@
 ---
 services: active-directory-b2c
 platforms: dotnet
-author: gsacavdm
+author: jmprieur
 ---
 
 # A Console application for Azure AD B2C User Management the Azure AD Graph
