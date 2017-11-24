@@ -65,7 +65,7 @@ namespace B2CGraphShell
                     var innerException = ex.InnerException;
                     while (innerException != null)
                     {
-                        Console.WriteLine(ex.InnerException.Message);
+                        Console.WriteLine(innerException.Message);
                         innerException = innerException.InnerException;
                     }
                 }
