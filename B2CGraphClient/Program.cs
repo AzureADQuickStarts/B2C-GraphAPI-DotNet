@@ -62,7 +62,12 @@ namespace B2CGraphShell
                 Console.ForegroundColor = ConsoleColor.Red;
                 if (ex.InnerException != null)
                 {
-                    Console.WriteLine(ex.InnerException.Message);
+                    var innerException = ex.InnerException;
+                    while (innerException != null)
+                    {
+                        Console.WriteLine(innerException.Message);
+                        innerException = innerException.InnerException;
+                    }
                 }
                 else 
                 {
