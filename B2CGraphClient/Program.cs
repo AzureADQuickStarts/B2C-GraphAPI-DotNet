@@ -60,9 +60,10 @@ namespace B2CGraphShell
             catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                if (ex.InnerException != null)
+                
+                var innerException = ex.InnerException;
+                if (innerException != null)
                 {
-                    var innerException = ex.InnerException;
                     while (innerException != null)
                     {
                         Console.WriteLine(innerException.Message);
