@@ -1,4 +1,4 @@
-﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -60,9 +60,9 @@ namespace B2CGraphShell
             return await SendGraphDeleteRequest("/users/" + objectId);
         }
 
-        public async Task<string> RegisterExtension(string objectId, string body)
+        public async Task<string> RegisterExtension(string objectId, string json)
         {
-            return await SendGraphPostRequest("/applications/" + objectId + "/extensionProperties", body);
+            return await SendGraphPostRequest("/applications/" + objectId + "/extensionProperties", json);
         }
 
         public async Task<string> UnregisterExtension(string appObjectId, string extensionObjectId)
