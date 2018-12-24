@@ -83,7 +83,7 @@ namespace B2CGraphShell
         private async Task<string> SendGraphDeleteRequest(string api)
         {
             // NOTE: This client uses ADAL v2, not ADAL v4
-            AuthenticationResult result = authContext.AcquireToken(Globals.aadGraphResourceId, credential);
+            AuthenticationResult result = await authContext.AcquireTokenAsync(Globals.aadGraphResourceId, credential);
             HttpClient http = new HttpClient();
             string url = Globals.aadGraphEndpoint + tenant + api + "?" + Globals.aadGraphVersion;
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, url);
@@ -112,7 +112,7 @@ namespace B2CGraphShell
         private async Task<string> SendGraphPatchRequest(string api, string json)
         {
             // NOTE: This client uses ADAL v2, not ADAL v4
-            AuthenticationResult result = authContext.AcquireToken(Globals.aadGraphResourceId, credential);
+            AuthenticationResult result = await authContext.AcquireTokenAsync(Globals.aadGraphResourceId, credential);
             HttpClient http = new HttpClient();
             string url = Globals.aadGraphEndpoint + tenant + api + "?" + Globals.aadGraphVersion;
 
@@ -146,7 +146,7 @@ namespace B2CGraphShell
         private async Task<string> SendGraphPostRequest(string api, string json)
         {
             // NOTE: This client uses ADAL v2, not ADAL v4
-            AuthenticationResult result = authContext.AcquireToken(Globals.aadGraphResourceId, credential);
+            AuthenticationResult result = await authContext.AcquireTokenAsync(Globals.aadGraphResourceId, credential);
             HttpClient http = new HttpClient();
             string url = Globals.aadGraphEndpoint + tenant + api + "?" + Globals.aadGraphVersion;
 
@@ -181,7 +181,7 @@ namespace B2CGraphShell
         {
             // First, use ADAL to acquire a token using the app's identity (the credential)
             // The first parameter is the resource we want an access_token for; in this case, the Graph API.
-            AuthenticationResult result = authContext.AcquireToken("https://graph.windows.net", credential);
+            AuthenticationResult result = await authContext.AcquireTokenAsync("https://graph.windows.net", credential);
             
             // For B2C user managment, be sure to use the 1.6 Graph API version.
             HttpClient http = new HttpClient();
