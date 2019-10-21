@@ -1,16 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2CGraphClient", "B2CGraphClient.csproj", "{6F5B6039-0952-4ECE-9584-ED1F1A253E24}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{17ED662F-59E0-4FB6-8215-AC1EB65E13B7}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B2CGraphClient", "B2CGraphClient.csproj", "{CBAC6902-DADB-41CF-8259-D0EEBF548AD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6F5B6039-0952-4ECE-9584-ED1F1A253E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F5B6039-0952-4ECE-9584-ED1F1A253E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F5B6039-0952-4ECE-9584-ED1F1A253E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F5B6039-0952-4ECE-9584-ED1F1A253E24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBAC6902-DADB-41CF-8259-D0EEBF548AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBAC6902-DADB-41CF-8259-D0EEBF548AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBAC6902-DADB-41CF-8259-D0EEBF548AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBAC6902-DADB-41CF-8259-D0EEBF548AD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35D2E226-559D-469F-AC63-45B3B6AFD71E}
 	EndGlobalSection
 EndGlobal
