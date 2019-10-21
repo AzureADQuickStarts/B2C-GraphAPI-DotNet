@@ -1,8 +1,6 @@
 ﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -28,7 +26,7 @@ namespace B2CGraphShell
             this.tenant = tenant;
 
             // The AuthenticationContext is ADAL's primary class, in which you indicate the direcotry to use.
-            this.authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenant);
+            this.authContext = new AuthenticationContext(Globals.aadInstance + tenant);
 
             // The ClientCredential is where you pass in your client_id and client_secret, which are 
             // provided to Azure AD in order to receive an access_token using the app's identity.
@@ -83,7 +81,7 @@ namespace B2CGraphShell
         private async Task<string> SendGraphDeleteRequest(string api)
         {
             // NOTE: This client uses ADAL v2, not ADAL v4
-            AuthenticationResult result = authContext.AcquireToken(Globals.aadGraphResourceId, credential);
+            AuthenticationResult result = await authContext.AcquireTokenAsync(Globals.aadGraphResourceId, credential);
             HttpClient http = new HttpClient();
             string url = Globals.aadGraphEndpoint + tenant + api + "?" + Globals.aadGraphVersion;
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, url);
@@ -112,7 +110,7 @@ namespace B2CGraphShell
         private async Task<string> SendGraphPatchRequest(string api, string json)
         {
             // NOTE: This client uses ADAL v2, not ADAL v4
-            AuthenticationResult result = authContext.AcquireToken(Globals.aadGraphResourceId, credential);
+            AuthenticationResult result = await authContext.AcquireTokenAsync(Globals.aadGraphResourceId, credential);
             HttpClient http = new HttpClient();
             string url = Globals.aadGraphEndpoint + tenant + api + "?" + Globals.aadGraphVersion;
 
@@ -146,7 +144,7 @@ namespace B2CGraphShell
         private async Task<string> SendGraphPostRequest(string api, string json)
         {
             // NOTE: This client uses ADAL v2, not ADAL v4
-            AuthenticationResult result = authContext.AcquireToken(Globals.aadGraphResourceId, credential);
+            AuthenticationResult result = await authContext.AcquireTokenAsync(Globals.aadGraphResourceId, credential);
             HttpClient http = new HttpClient();
             string url = Globals.aadGraphEndpoint + tenant + api + "?" + Globals.aadGraphVersion;
 
@@ -181,15 +179,15 @@ namespace B2CGraphShell
         {
             // First, use ADAL to acquire a token using the app's identity (the credential)
             // The first parameter is the resource we want an access_token for; in this case, the Graph API.
-            AuthenticationResult result = authContext.AcquireToken("https://graph.windows.net", credential);
-            
+            AuthenticationResult result = await authContext.AcquireTokenAsync(Globals.aadGraphResourceId, credential);
+
             // For B2C user managment, be sure to use the 1.6 Graph API version.
             HttpClient http = new HttpClient();
-            string url = "https://graph.windows.net/" + tenant + api + "?" + Globals.aadGraphVersion;
+            string url = Globals.aadGraphEndpoint + tenant + api + "?" + Globals.aadGraphVersion;
             if (!string.IsNullOrEmpty(query))
             {
                 url += "&" + query;
-            } 
+            }
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("GET " + url);
@@ -213,6 +211,6 @@ namespace B2CGraphShell
             Console.WriteLine("");
 
             return await response.Content.ReadAsStringAsync();
-        } 
+        }
     }
 }
